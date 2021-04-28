@@ -3,10 +3,12 @@
     <div id="title-area">結帳</div>
     <div id="step-area"><StepContainer /></div>
     <div id="footer-area"><Footer /></div>
+    <div id="cart-area"><Cart /></div>
   </div>
 </template>
 
 <script>
+import CartVue from './cart/Cart.vue';
 import FooterVue from './footer/Footer.vue';
 import StepContainerVue from './step/StepContainer.vue';
 export default {
@@ -14,6 +16,7 @@ export default {
   components: {
     StepContainer: StepContainerVue,
     Footer: FooterVue,
+    Cart: CartVue,
   },
   data: function () {
     return {
@@ -31,11 +34,12 @@ export default {
   padding: 40px;
   column-gap: 130px;
   grid-template-columns: 540px 440px;
-  grid-template-rows: 38px 48px 64px 336px 70px;
+  grid-template-rows: 38px 48px 24px 64px 336px 70px;
   grid-template-areas:
     'title .'
     '. .'
     'step cart'
+    '. cart'
     'router cart'
     'footer cart';
 }
@@ -56,5 +60,9 @@ export default {
 
 #footer-area {
   grid-area: footer;
+}
+
+#cart-area {
+  grid-area: cart;
 }
 </style>
