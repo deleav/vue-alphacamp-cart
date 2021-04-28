@@ -1,12 +1,22 @@
 <template>
   <div id="main">
-    <div class="title">結帳</div>
+    <div id="title">結帳</div>
+    <div id="step"><StepContainer /></div>
   </div>
 </template>
 
 <script>
+import StepContainerVue from './step/StepContainer.vue';
 export default {
   name: 'App',
+  components: {
+    StepContainer: StepContainerVue,
+  },
+  data: function () {
+    return {
+      step: 1,
+    };
+  },
 };
 </script>
 
@@ -27,10 +37,17 @@ export default {
     'footer cart';
 }
 
-.title {
+#title {
+  display: flex;
+  align-items: center;
   grid-area: title;
   font-size: 32px;
   font-weight: 700;
-  line-height: 38px;
+}
+
+#step {
+  display: flex;
+  align-items: center;
+  grid-area: step;
 }
 </style>

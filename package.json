@@ -21,6 +21,7 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-vue": "^6.2.2",
     "prettier": "^2.2.1",
+    "vue-svg-loader": "^0.16.0",
     "vue-template-compiler": "^2.6.11"
   },
   "browserslist": [
