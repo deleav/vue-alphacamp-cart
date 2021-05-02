@@ -2,6 +2,7 @@
   <div id="main">
     <div id="title-area">結帳</div>
     <div id="step-area"><StepContainer /></div>
+    <div id="router-area"><router-view /></div>
     <div id="footer-area"><Footer /></div>
     <div id="cart-area"><Cart /></div>
   </div>
@@ -56,6 +57,10 @@ export default {
   grid-area: step;
   display: flex;
   align-items: center;
+}
+
+#router-area {
+  grid-area: router;
 }
 
 #footer-area {

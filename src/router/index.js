@@ -1,19 +1,30 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import MainVue from '../components/Main.vue';
-import CheckoutStep from '../components/checkoutStep/CheckoutStep.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'Main',
     component: MainVue,
     children: [
       {
-        path: ':step',
-        component: CheckoutStep,
+        path: '/',
+        component: () =>
+          import(
+            /* webpackChunkName: "ShippingInfo" */
+            '../components/checkoutStep/ShippingInfo.vue'
+          ),
+      },
+      {
+        path: 'shippingInfo',
+        component: () =>
+          import(
+            /* webpackChunkName: "ShippingInfo" */
+            '../components/checkoutStep/ShippingInfo.vue'
+          ),
       },
     ],
   },
