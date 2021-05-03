@@ -23,10 +23,18 @@ export default {
   },
   methods: {
     handlPrevious() {
-      alert('previous');
+      const step = +this.$route.path.split('/')[1];
+
+      if (!Number.isNaN(step) && step > 1) {
+        this.$router.push(`${step - 1}`);
+      }
     },
     handleNext() {
-      alert('next');
+      const step = +this.$route.path.split('/')[1];
+
+      if (!Number.isNaN(step) && step < 3) {
+        this.$router.push(`${step + 1}`);
+      }
     },
   },
 };

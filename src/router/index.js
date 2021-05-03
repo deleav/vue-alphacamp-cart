@@ -10,8 +10,9 @@ const routes = [
     name: 'Main',
     component: MainVue,
     children: [
+      { path: '/', redirect: '/1' },
       {
-        path: '/',
+        path: '1',
         component: () =>
           import(
             /* webpackChunkName: "ShippingInfo" */
@@ -19,7 +20,15 @@ const routes = [
           ),
       },
       {
-        path: 'shippingInfo',
+        path: '2',
+        component: () =>
+          import(
+            /* webpackChunkName: "ShippingInfo" */
+            '../components/checkoutStep/ShippingInfo.vue'
+          ),
+      },
+      {
+        path: '3',
         component: () =>
           import(
             /* webpackChunkName: "ShippingInfo" */
