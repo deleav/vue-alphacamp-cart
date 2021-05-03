@@ -17,6 +17,21 @@
 import CartVue from './cart/Cart.vue';
 import FooterVue from './footer/Footer.vue';
 import StepContainerVue from './step/StepContainer.vue';
+
+const initialValues = {
+  salutation: 'Mr.',
+  username: '',
+  phone: '',
+  email: '',
+  city: '',
+  addr: '',
+  shippingFee: 0,
+  ccname: '',
+  cardnumber: '',
+  expdate: '',
+  cvv: '',
+};
+
 export default {
   name: 'App',
   components: {
@@ -26,25 +41,29 @@ export default {
   },
   data: function () {
     return {
-      form: {
-        salutation: 'Mr.',
-        username: '',
-        phone: '',
-        email: '',
-        city: '',
-        addr: '',
-        shippingFee: 0,
-        ccname: '',
-        cardnumber: '',
-        expdate: '',
-        cvv: '',
-      },
+      form: initialValues,
     };
   },
   methods: {
     handleSubmit() {
       console.log(JSON.stringify(this.form, null, 2));
+      this.form = initialValues;
     },
+  },
+  watch: {
+    form: {
+      deep: true,
+      handler() {
+        localStorage.setItem('form', JSON.stringify(this.form));
+      },
+    },
+  },
+  created() {
+    try {
+      this.form = JSON.parse(localStorage.getItem('form'));
+    } catch (error) {
+      console.error(error);
+    }
   },
 };
 </script>
