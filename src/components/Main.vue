@@ -1,14 +1,16 @@
 <template>
   <div id="main">
     <div id="title-area">結帳</div>
-    <div id="step-area"><StepContainer /></div>
+    <div id="step-area"><StepContainer :currentStep="step" /></div>
     <div id="router-area">
       <router-view
         v-bind="form"
         @formChange="form[$event.name] = $event.value"
       />
     </div>
-    <div id="footer-area"><Footer :handleSubmit="handleSubmit" /></div>
+    <div id="footer-area">
+      <Footer :step="step" :handleSubmit="handleSubmit" />
+    </div>
     <div id="cart-area"><Cart :shippingFee="form.shippingFee" /></div>
   </div>
 </template>
@@ -48,6 +50,11 @@ export default {
     handleSubmit() {
       console.log(JSON.stringify(this.form, null, 2));
       this.form = initialValues;
+    },
+  },
+  computed: {
+    step() {
+      return +this.$route.path.split('/')[1];
     },
   },
   watch: {
