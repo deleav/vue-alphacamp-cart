@@ -1,5 +1,9 @@
 # vue-alphacamp-cart
+## Demo
+![Demo](./public/demo.gif)
 
+## Result
+![Result](./public/result.png)
 ## Project setup
 ```
 yarn install
@@ -14,11 +18,3 @@ yarn serve
 ```
 yarn build
 ```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
