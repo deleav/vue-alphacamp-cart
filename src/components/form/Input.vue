@@ -6,6 +6,8 @@
       :name="name"
       :type="type"
       :placeholder="placeholder"
+      :value="value"
+      @input="handleType"
       class="input-text"
     />
   </div>
@@ -28,6 +30,17 @@ export default {
     placeholder: {
       type: String,
     },
+    value: {
+      type: String,
+    },
+  },
+  methods: {
+    handleType(e) {
+      const name = e.target.getAttribute('name');
+      const value = e.target.value;
+
+      this.$emit('change', { name, value });
+    },
   },
 };
 </script>
@@ -39,6 +52,9 @@ export default {
   padding: 12px 18px;
   width: 100%;
   height: 40px;
+}
+.input-text::placeholder {
+  color: #999;
 }
 .input-container {
   display: grid;

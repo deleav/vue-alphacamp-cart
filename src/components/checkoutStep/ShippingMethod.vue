@@ -6,12 +6,13 @@
         title="標準運送"
         subtitle="約 3~7 個工作天"
         :price="0"
-        checked
+        :checked="shippingFee === 0"
         @change="handleClick"
       />
       <Radio
         title="DHL 貨運"
         subtitle="48 小時內送達"
+        :checked="shippingFee === 500"
         :price="500"
         @change="handleClick"
       />
@@ -35,7 +36,7 @@ export default {
   },
   methods: {
     handleClick(e) {
-      this.$emit('shippingFeeChange', e);
+      this.$emit('formChange', { name: 'shippingFee', value: e });
     },
   },
 };

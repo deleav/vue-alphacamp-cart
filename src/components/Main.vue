@@ -4,12 +4,12 @@
     <div id="step-area"><StepContainer /></div>
     <div id="router-area">
       <router-view
-        :shippingFee="shippingFee"
-        @shippingFeeChange="shippingFee = $event"
+        v-bind="form"
+        @formChange="form[$event.name] = $event.value"
       />
     </div>
     <div id="footer-area"><Footer /></div>
-    <div id="cart-area"><Cart :shippingFee="shippingFee" /></div>
+    <div id="cart-area"><Cart :shippingFee="form.shippingFee" /></div>
   </div>
 </template>
 
@@ -26,8 +26,25 @@ export default {
   },
   data: function () {
     return {
-      shippingFee: 0,
+      form: {
+        salutation: 'Mr.',
+        username: '',
+        phone: '',
+        email: '',
+        city: '',
+        addr: '',
+        shippingFee: 0,
+        ccname: '',
+        cardnumber: '',
+        expdate: '',
+        cvv: '',
+      },
     };
+  },
+  watch: {
+    form() {
+      console.log(this.form);
+    },
   },
 };
 </script>

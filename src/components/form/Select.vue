@@ -1,11 +1,20 @@
 <template>
   <div class="select-container">
     <label class="label" :for="name">{{ label }}</label>
-    <select :name="name" :id="name" class="select">
+    <select
+      :name="name"
+      :id="name"
+      :class="{ select: true, disable: !selected }"
+      @change="handleChange"
+      v-model="selected"
+    >
+      <option v-if="!!disabledOption" value="" disabled>
+        {{ disabledOption }}
+      </option>
       <option
         v-for="option in options"
         :key="option.value"
-        :value="options.value"
+        :value="option.value"
       >
         {{ option.name }}
       </option>
@@ -35,6 +44,26 @@ export default {
       type: Array,
       default: () => [],
     },
+    value: {
+      type: String,
+    },
+    disabledOption: {
+      type: String,
+    },
+  },
+  created() {
+    this.selected = this.value;
+  },
+  data: function () {
+    return {
+      selected: '',
+    };
+  },
+  methods: {
+    handleChange(e) {
+      const name = e.target.getAttribute('name');
+      this.$emit('change', { name, value: this.selected });
+    },
   },
 };
 </script>
@@ -53,6 +82,9 @@ export default {
   height: 40px;
   appearance: none;
   cursor: pointer;
+}
+.select.disable {
+  color: #999;
 }
 .arrow-container {
   position: absolute;
