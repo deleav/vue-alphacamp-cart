@@ -2,9 +2,14 @@
   <div id="main">
     <div id="title-area">結帳</div>
     <div id="step-area"><StepContainer /></div>
-    <div id="router-area"><router-view /></div>
+    <div id="router-area">
+      <router-view
+        :shippingFee="shippingFee"
+        @shippingFeeChange="shippingFee = $event"
+      />
+    </div>
     <div id="footer-area"><Footer /></div>
-    <div id="cart-area"><Cart /></div>
+    <div id="cart-area"><Cart :shippingFee="shippingFee" /></div>
   </div>
 </template>
 
@@ -21,7 +26,7 @@ export default {
   },
   data: function () {
     return {
-      step: 1,
+      shippingFee: 0,
     };
   },
 };

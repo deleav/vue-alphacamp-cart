@@ -45,10 +45,15 @@ export default {
     PriceRow: PriceRowVue,
     Item: ItemVue,
   },
+  props: {
+    shippingFee: {
+      type: Number,
+      required: true,
+    },
+  },
   data: function () {
     return {
       items,
-      shippingFee: 0,
     };
   },
   methods: {
@@ -72,7 +77,7 @@ export default {
         return (acc += cur.amount * cur.price);
       }, 0);
 
-      return getPriceText(price);
+      return getPriceText(price + this.shippingFee);
     },
   },
 };
