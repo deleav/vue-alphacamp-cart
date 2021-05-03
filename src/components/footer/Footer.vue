@@ -4,7 +4,7 @@
       <template v-slot:left><ArrowLeft /></template>
       上一步
     </Button>
-    <Button :onClick="handleNext" intent="primary">
+    <Button :onClick="finalStep ? handleSubmit : handleNext" intent="primary">
       <template v-if="finalStep">確認下單</template>
       <template v-else>下一步</template>
       <template v-slot:right>
@@ -21,6 +21,12 @@ export default {
   components: {
     Button: ButtonVue,
     ArrowLeft,
+  },
+  props: {
+    handleSubmit: {
+      type: Function,
+      required: true,
+    },
   },
   methods: {
     handlPrevious() {

@@ -8,7 +8,7 @@
         @formChange="form[$event.name] = $event.value"
       />
     </div>
-    <div id="footer-area"><Footer /></div>
+    <div id="footer-area"><Footer :handleSubmit="handleSubmit" /></div>
     <div id="cart-area"><Cart :shippingFee="form.shippingFee" /></div>
   </div>
 </template>
@@ -41,9 +41,9 @@ export default {
       },
     };
   },
-  watch: {
-    form() {
-      console.log(this.form);
+  methods: {
+    handleSubmit() {
+      console.log(JSON.stringify(this.form, null, 2));
     },
   },
 };
