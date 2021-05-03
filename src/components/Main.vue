@@ -11,7 +11,12 @@
     <div id="footer-area">
       <Footer :step="step" :handleSubmit="handleSubmit" />
     </div>
-    <div id="cart-area"><Cart :shippingFee="form.shippingFee" /></div>
+    <div id="cart-area">
+      <Cart
+        :shippingFee="form.shippingFee"
+        @change="form.totalPrice = $event"
+      />
+    </div>
     <Modal v-if="openModal" :onClose="handleCloseModal">
       <div id="result-json">{{ prettyFormString }}</div>
     </Modal>
@@ -19,6 +24,7 @@
 </template>
 
 <script>
+import safeParseJSON from '../utils/safeParseJSON';
 import CartVue from './cart/Cart.vue';
 import FooterVue from './footer/Footer.vue';
 import ModalVue from './modal/Modal.vue';
@@ -36,6 +42,7 @@ const initialValues = {
   cardnumber: '',
   expdate: '',
   cvv: '',
+  totalPrice: 0,
 };
 
 export default {
@@ -84,11 +91,7 @@ export default {
     },
   },
   created() {
-    try {
-      this.form = JSON.parse(localStorage.getItem('form'));
-    } catch (error) {
-      console.error(error);
-    }
+    this.form = safeParseJSON(localStorage.getItem('form'));
   },
 };
 </script>

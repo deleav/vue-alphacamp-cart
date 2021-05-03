@@ -50,6 +50,9 @@ export default {
       type: Number,
       required: true,
     },
+    onChange: {
+      type: Function,
+    },
   },
   data: function () {
     return {
@@ -77,7 +80,9 @@ export default {
         return (acc += cur.amount * cur.price);
       }, 0);
 
-      return getPriceText(price + this.shippingFee);
+      const total = price + this.shippingFee;
+      this.$emit('change', total);
+      return getPriceText(total);
     },
   },
 };

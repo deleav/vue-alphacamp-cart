@@ -5,7 +5,7 @@
     </div>
     <div class="title-area">
       <div class="title">{{ title }}</div>
-      <div class="price">{{ calculatedPrice }}</div>
+      <div class="price">{{ price }}</div>
     </div>
     <div class="amount-area">
       <div class="counter minus" @click="handleDecrease" />
@@ -16,8 +16,6 @@
 </template>
 
 <script>
-import getPriceText from '../../utils/getPriceText';
-
 export default {
   props: {
     imgSrc: {
@@ -50,9 +48,6 @@ export default {
     },
   },
   computed: {
-    calculatedPrice() {
-      return getPriceText(this.price * this.amount);
-    },
     handleIncrease() {
       return this.onIncrease(this.index);
     },
