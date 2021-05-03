@@ -7,8 +7,8 @@
         label="稱謂"
         name="salutation"
         :options="[
-          { name: '先生.', value: 'Mr.' },
-          { name: '小姐.', value: 'Ms.' },
+          { name: '先生', value: 'Mr.' },
+          { name: '小姐', value: 'Ms.' },
         ]"
       />
       <Input

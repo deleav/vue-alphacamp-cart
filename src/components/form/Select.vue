@@ -10,11 +10,19 @@
         {{ option.name }}
       </option>
     </select>
+    <div class="arrow-container">
+      <TriangleArrowDown />
+    </div>
   </div>
 </template>
 
 <script>
+import TriangleArrowDown from '../../assets/triangle-arrow-down.svg';
+
 export default {
+  components: {
+    TriangleArrowDown,
+  },
   props: {
     name: {
       type: String,
@@ -36,6 +44,7 @@ export default {
 
 <style scoped>
 .select-container {
+  position: relative;
   display: grid;
   row-gap: 8px;
 }
@@ -45,6 +54,15 @@ export default {
   padding: 12px 18px;
   width: 100%;
   height: 40px;
+  appearance: none;
+  cursor: pointer;
+}
+.arrow-container {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
 }
 .label {
   font-weight: bold;
