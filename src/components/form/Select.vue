@@ -31,9 +31,6 @@ export default {
     label: {
       type: String,
     },
-    style: {
-      type: String,
-    },
     options: {
       type: Array,
       default: () => [],

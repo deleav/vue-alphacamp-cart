@@ -22,9 +22,6 @@ export default {
     placeholder: {
       type: String,
     },
-    style: {
-      type: String,
-    },
   },
 };
 </script>

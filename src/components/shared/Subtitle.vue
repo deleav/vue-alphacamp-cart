@@ -1,7 +1,7 @@
 <template>
-  <t2 class="subtitle">
+  <h2 class="subtitle">
     <slot />
-  </t2>
+  </h2>
 </template>
 
 <script>
@@ -13,6 +13,7 @@ export default {};
   display: block;
   font-size: 24px;
   font-weight: 700;
+  margin-top: 0;
   margin-bottom: 24px;
 }
 </style>
