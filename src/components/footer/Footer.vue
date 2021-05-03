@@ -1,15 +1,25 @@
 <template>
   <div id="footer-main">
-    <Button :onClick="handlPrevious">上一步</Button>
-    <Button :onClick="handleNext" intent="primary">下一步</Button>
+    <Button :onClick="handlPrevious">
+      <template v-slot:left><ArrowLeft /></template>
+      上一步
+    </Button>
+    <Button :onClick="handleNext" intent="primary">
+      下一步
+      <template v-slot:right>
+        <ArrowLeft style="transform: rotate(180deg)" />
+      </template>
+    </Button>
   </div>
 </template>
 
 <script>
+import ArrowLeft from '../../assets/arrow-left.svg';
 import ButtonVue from './Button.vue';
 export default {
   components: {
     Button: ButtonVue,
+    ArrowLeft,
   },
   methods: {
     handlPrevious() {

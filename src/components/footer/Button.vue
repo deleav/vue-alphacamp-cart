@@ -29,6 +29,8 @@ export default {
 <style scoped>
 .button {
   display: grid;
+  grid-auto-flow: column;
+  place-content: center;
   place-items: center;
   column-gap: 12px;
   width: 174px;
@@ -45,5 +47,8 @@ export default {
 .button.primary {
   background-color: #f67599;
   color: #fff;
+}
+.button.primary > svg path {
+  fill: #fff;
 }
 </style>
