@@ -5,8 +5,8 @@
       :key="stepIndicator"
       :index="index + 1"
       :title="stepIndicator"
-      :inactive="index > currentStep"
-      :checked="index < currentStep"
+      :inactive="index + 1 > currentStep"
+      :checked="index + 1 < currentStep"
     />
   </div>
 </template>
@@ -21,7 +21,7 @@ export default {
   props: {
     currentStep: {
       type: Number,
-      default: 0,
+      default: 1,
     },
   },
   data: function () {

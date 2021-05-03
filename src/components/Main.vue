@@ -12,12 +12,16 @@
       <Footer :step="step" :handleSubmit="handleSubmit" />
     </div>
     <div id="cart-area"><Cart :shippingFee="form.shippingFee" /></div>
+    <Modal v-if="openModal" :onClose="handleCloseModal">
+      <div id="result-json">{{ prettyFormString }}</div>
+    </Modal>
   </div>
 </template>
 
 <script>
 import CartVue from './cart/Cart.vue';
 import FooterVue from './footer/Footer.vue';
+import ModalVue from './modal/Modal.vue';
 import StepContainerVue from './step/StepContainer.vue';
 
 const initialValues = {
@@ -40,16 +44,30 @@ export default {
     StepContainer: StepContainerVue,
     Footer: FooterVue,
     Cart: CartVue,
+    Modal: ModalVue,
   },
   data: function () {
     return {
       form: initialValues,
+      openModal: false,
+      prettyFormString: '',
     };
   },
   methods: {
     handleSubmit() {
-      console.log(JSON.stringify(this.form, null, 2));
+      const str = JSON.stringify(this.form, null, 2);
+      // for console
+      console.log(str);
+      // for modal
+      this.prettyFormString = str;
+      this.handleOpenModal();
       this.form = initialValues;
+    },
+    handleOpenModal() {
+      this.openModal = true;
+    },
+    handleCloseModal() {
+      this.openModal = false;
     },
   },
   computed: {
@@ -117,5 +135,9 @@ export default {
 
 #cart-area {
   grid-area: cart;
+}
+
+#result-json {
+  white-space: pre;
 }
 </style>

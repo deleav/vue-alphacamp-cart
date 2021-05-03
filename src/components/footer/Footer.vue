@@ -27,6 +27,10 @@ export default {
       type: Function,
       required: true,
     },
+    step: {
+      type: Number,
+      required: true,
+    },
   },
   methods: {
     handlPrevious() {
@@ -41,9 +45,6 @@ export default {
     },
   },
   computed: {
-    step() {
-      return +this.$route.path.split('/')[1];
-    },
     finalStep() {
       return this.step === 3;
     },
