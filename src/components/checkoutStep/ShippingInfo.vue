@@ -16,18 +16,21 @@
         label="姓名"
         type="text"
         name="name"
+        placeholder="請輸入姓名"
       />
       <Input
         style="grid-column: 1 / span 3"
         label="電話"
         type="text"
         name="phone"
+        placeholder="請輸入行動電話"
       />
       <Input
         style="grid-column: 4 / span 3"
         label="Email"
         type="text"
         name="email"
+        placeholder="請輸入電子郵件"
       />
       <Select
         style="grid-column: 1 / span 2"
@@ -42,6 +45,7 @@
         label="地址"
         type="text"
         name="addr"
+        placeholder="請輸入地址"
       />
     </div>
   </div>
