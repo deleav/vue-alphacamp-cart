@@ -5,9 +5,10 @@
       上一步
     </Button>
     <Button :onClick="handleNext" intent="primary">
-      下一步
+      <template v-if="finalStep">確認下單</template>
+      <template v-else>下一步</template>
       <template v-slot:right>
-        <ArrowLeft style="transform: rotate(180deg)" />
+        <ArrowLeft v-show="!finalStep" style="transform: rotate(180deg)" />
       </template>
     </Button>
   </div>
@@ -23,18 +24,22 @@ export default {
   },
   methods: {
     handlPrevious() {
-      const step = +this.$route.path.split('/')[1];
-
-      if (!Number.isNaN(step) && step > 1) {
-        this.$router.push(`${step - 1}`);
+      if (!Number.isNaN(this.step) && this.step > 1) {
+        this.$router.push(`${this.step - 1}`);
       }
     },
     handleNext() {
-      const step = +this.$route.path.split('/')[1];
-
-      if (!Number.isNaN(step) && step < 3) {
-        this.$router.push(`${step + 1}`);
+      if (!Number.isNaN(this.step) && this.step < 3) {
+        this.$router.push(`${this.step + 1}`);
       }
+    },
+  },
+  computed: {
+    step() {
+      return +this.$route.path.split('/')[1];
+    },
+    finalStep() {
+      return this.step === 3;
     },
   },
 };

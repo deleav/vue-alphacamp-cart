@@ -32,7 +32,7 @@ const routes = [
         component: () =>
           import(
             /* webpackChunkName: "ShippingInfo" */
-            '../components/checkoutStep/ShippingInfo.vue'
+            '../components/checkoutStep/PaymentInfo.vue'
           ),
       },
     ],

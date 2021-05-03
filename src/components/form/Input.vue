@@ -1,7 +1,13 @@
 <template>
   <div class="input-container">
     <label class="label" :for="name">{{ label }}</label>
-    <input :id="name" :name="name" :type="type" class="input-text" />
+    <input
+      :id="name"
+      :name="name"
+      :type="type"
+      :placeholder="placeholder"
+      class="input-text"
+    />
   </div>
 </template>
 
