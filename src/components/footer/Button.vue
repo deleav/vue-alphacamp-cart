@@ -1,5 +1,5 @@
 <template>
-  <button @click="onClick()" :class="{ button: true, primary }">
+  <button @click="$emit('click')" :class="{ button: true, primary }">
     <slot name="left" />
     <slot />
     <slot name="right" />
@@ -12,10 +12,6 @@ export default {
     intent: {
       type: String,
       default: 'text',
-    },
-    onClick: {
-      type: Function,
-      required: true,
     },
   },
   computed: {

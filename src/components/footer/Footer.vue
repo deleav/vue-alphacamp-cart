@@ -1,10 +1,10 @@
 <template>
   <div id="footer-main">
-    <Button :onClick="handlPrevious">
+    <Button @click="handlPrevious">
       <template v-slot:left><ArrowLeft /></template>
       上一步
     </Button>
-    <Button :onClick="finalStep ? handleSubmit : handleNext" intent="primary">
+    <Button @click="handleNext" intent="primary">
       <template v-if="finalStep">確認下單</template>
       <template v-else>下一步</template>
       <template v-slot:right>
@@ -23,10 +23,6 @@ export default {
     ArrowLeft,
   },
   props: {
-    handleSubmit: {
-      type: Function,
-      required: true,
-    },
     step: {
       type: Number,
       required: true,
@@ -39,6 +35,7 @@ export default {
       }
     },
     handleNext() {
+      if (this.finalStep) return this.$emit('submit');
       if (!Number.isNaN(this.step) && this.step < 3) {
         this.$router.push(`${this.step + 1}`);
       }

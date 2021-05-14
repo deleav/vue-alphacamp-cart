@@ -5,11 +5,11 @@
     <div id="router-area">
       <router-view
         v-bind="form"
-        @formChange="form[$event.name] = $event.value"
+        @form-change="form[$event.name] = $event.value"
       />
     </div>
     <div id="footer-area">
-      <Footer :step="step" :handleSubmit="handleSubmit" />
+      <Footer :step="step" @submit="handleSubmit" />
     </div>
     <div id="cart-area">
       <Cart

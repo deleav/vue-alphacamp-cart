@@ -7,8 +7,8 @@
         :key="index"
         :index="index"
         v-bind="item"
-        :onIncrease="increaseAmount"
-        :onDecrease="decreaseAmount"
+        @increase="increaseAmount"
+        @decrease="decreaseAmount"
       />
     </div>
     <div class="footer-container">
@@ -50,9 +50,6 @@ export default {
       type: Number,
       required: true,
     },
-    onChange: {
-      type: Function,
-    },
   },
   data: function () {
     return {
@@ -61,14 +58,10 @@ export default {
   },
   methods: {
     increaseAmount(index) {
-      return () => {
-        this.items[index].amount++;
-      };
+      this.items[index].amount++;
     },
     decreaseAmount(index) {
-      return () => {
-        if (this.items[index].amount > 1) this.items[index].amount--;
-      };
+      if (this.items[index].amount > 1) this.items[index].amount--;
     },
   },
   computed: {

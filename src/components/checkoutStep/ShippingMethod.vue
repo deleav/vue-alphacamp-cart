@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     handleClick(e) {
-      this.$emit('formChange', { name: 'shippingFee', value: e });
+      this.$emit('form-change', { name: 'shippingFee', value: e });
     },
   },
 };

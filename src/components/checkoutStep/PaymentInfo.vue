@@ -53,7 +53,7 @@ export default {
   },
   methods: {
     handleChange(obj) {
-      this.$emit('formChange', obj);
+      this.$emit('form-change', obj);
     },
   },
 };

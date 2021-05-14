@@ -8,9 +8,9 @@
       <div class="price">{{ price }}</div>
     </div>
     <div class="amount-area">
-      <div class="counter minus" @click="handleDecrease" />
+      <div class="counter minus" @click="$emit('decrease', index)" />
       {{ amount }}
-      <div class="counter plus" @click="handleIncrease" />
+      <div class="counter plus" @click="$emit('increase', index)" />
     </div>
   </div>
 </template>
@@ -37,22 +37,6 @@ export default {
     amount: {
       type: Number,
       required: true,
-    },
-    onIncrease: {
-      type: Function,
-      required: true,
-    },
-    onDecrease: {
-      type: Function,
-      required: true,
-    },
-  },
-  computed: {
-    handleIncrease() {
-      return this.onIncrease(this.index);
-    },
-    handleDecrease() {
-      return this.onDecrease(this.index);
     },
   },
 };
