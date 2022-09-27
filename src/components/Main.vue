@@ -91,7 +91,11 @@ export default {
     },
   },
   created() {
-    this.form = safeParseJSON(localStorage.getItem('form'));
+    const storedForm = localStorage.getItem('form');
+    this.form =
+      typeof storedForm === 'object'
+        ? safeParseJSON(storedForm)
+        : initialValues;
   },
 };
 </script>
